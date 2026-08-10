@@ -539,6 +539,15 @@ td, th {
     margin: 5px 0;
   }
 }
+    @media print {
+  input[type=number]::-webkit-inner-spin-button,
+  input[type=number]::-webkit-outer-spin-button,
+  input[type=date]::-webkit-calendar-picker-indicator {
+    display: none;
+    -webkit-appearance: none;
+  }
+}
+
 
 
 
@@ -626,7 +635,7 @@ function printQuotation() {
   <!-- Header -->
   <header>
     <div class="header-banner">
-      <img src="C:\Users\suman\Downloads\Interior_logo.jpg" alt="Company Logo" class="company-logo">
+      <img src=".\Interior_logo.jpg" alt="Company Logo" class="company-logo">
       <h1>Chandini Interiors</h1>
       <p>Designs for Tomorrow</p>
     </div>
