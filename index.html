@@ -547,6 +547,21 @@ td, th {
     -webkit-appearance: none;
   }
 }
+    @media print {
+  /* Hide default dropdown/arrow icons in inputs */
+  input, select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background: none !important;
+  }
+
+  /* Optional: remove borders if arrow space remains */
+  select::-ms-expand {
+    display: none;
+  }
+}
+
 
 
 
