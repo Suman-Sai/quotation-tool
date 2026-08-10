@@ -1,0 +1,10 @@
+INFO: System started
+ERROR: Database connection failed
+INFO: Retrying...
+ERROR: Database connection failed again
+INFO: Admin logged in
+ERROR: Unauthorized access attempt
+INFO: Retrying...
+ERROR: Database Error
+INFO: Admin logged in
+ERROR: Unauthorized access
