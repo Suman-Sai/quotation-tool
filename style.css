@@ -1,45 +1,44 @@
-body {
+ body {
   font-family: "Segoe UI", Arial, sans-serif;
   background-color: #f8f9fa;
   margin: 40px;
   color: #333;
 }
 
-header {
+.header-banner {
+  background: linear-gradient(90deg, #004080, #007bff);
+  color: white;
+  padding: 25px 0;
+  border-radius: 8px;
   text-align: center;
-  margin-bottom: 20px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
 }
 
-header img {
-  width: 120px;
-  margin-bottom: 10px;
+.company-logo {
+  width: 380px;
+  height: auto;
+  display: block;
+  margin: 0 auto 15px;
 }
 
 h2 {
   color: #004080;
-  margin-bottom: 10px;
+  margin-top: 15px;
+  border-top: 3px solid #004080;
+  display: inline-block;
+  padding-top: 8px;
 }
 
-section {
-  background: #fff;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-  margin-bottom: 20px;
+.top-fields {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin: 20px 0;
 }
 
-label {
-  display: block;
-  margin-bottom: 10px;
-}
-
-input[type="text"],
-input[type="number"],
-input[type="date"] {
-  padding: 6px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  width: 250px;
+.top-fields label {
+  flex: 1;
+  min-width: 250px;
 }
 
 table {
@@ -60,6 +59,10 @@ td {
   border: 1px solid #ddd;
 }
 
+tbody tr:nth-child(even) {
+  background-color: #f2f6fc;
+}
+
 .btn {
   background-color: #007bff;
   color: white;
@@ -74,8 +77,484 @@ td {
 }
 
 .summary {
-  text-align: right;
   margin-top: 20px;
-  font-size: 18px;
-  font-weight: bold;
+  background-color: #e9f2ff;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  width: 350px;
 }
+
+.footer {
+  margin-top: 30px;
+  padding: 15px;
+  background-color: #f8f9fa;
+  border-top: 2px solid #004080;
+  font-size: 14px;
+  line-height: 1.6;
+  border-radius: 8px;
+}
+
+.print-section {
+  text-align: center;
+  margin-top: 20px;
+}
+
+@media print {
+  /* Hide buttons and Action column */
+  .btn, .print-section, th:last-child, td:last-child {
+    display: none !important;
+  }
+
+  /* Keep Amount in Words on one line */
+  #amountWords {
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
+  }
+
+  /* Fit everything on one page */
+  body {
+    margin: 0;
+    padding: 10mm;
+    background: white;
+    font-size: 12pt;
+  }
+
+  table {
+    page-break-inside: avoid;
+  }
+
+  .summary, .footer {
+    page-break-inside: avoid;
+  }
+
+  /* Reduce spacing for compact layout */
+  .top-fields, .summary, .footer {
+    margin: 10px 0;
+    padding: 10px;
+  }
+
+  /* Ensure logo and header stay visible */
+  .header-banner {
+    page-break-inside: avoid;
+  }
+}
+
+@media print {
+  /* Hide buttons and Action column */
+  .btn, .print-section, th:last-child, td:last-child {
+    display: none !important;
+  }
+
+  /* Compact banner for print */
+  .header-banner {
+    background: none !important;
+    padding: 4mm 0 !important;
+    text-align: center;
+  }
+
+  .company-logo {
+    width: 180px !important;
+    height: auto;
+    margin: 0 auto !important;
+    display: block;
+  }
+
+  .header-banner h1, .header-banner p {
+    display: none !important;
+  }
+
+  /* Show text values instead of inputs for GSTIN and Address */
+  #gstinNumber, #companyAddress {
+    border: none !important;
+    background: transparent !important;
+    pointer-events: none !important;
+    color: #000 !important;
+    font-weight: 500;
+    width: 100% !important;
+  }
+
+  /* Align labels and text neatly */
+  .footer label {
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  .footer input {
+    display: block;
+    margin-top: 2px;
+  }
+
+  /* Keep Amount in Words on one line */
+  #amountWords {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  /* Compact spacing for one-page fit */
+  body {
+    margin: 0;
+    padding: 8mm;
+    background: white;
+    font-size: 11pt;
+  }
+
+  .top-fields, .summary, .footer {
+    margin: 4mm 0 !important;
+    padding: 4mm !important;
+  }
+
+  table {
+    page-break-inside: avoid;
+  }
+
+  .summary, .footer {
+    page-break-inside: avoid;
+  }
+}
+@media print {
+  /* Hide buttons and Action column */
+  .btn, .print-section, th:last-child, td:last-child {
+    display: none !important;
+  }
+
+  /* Compact banner for print */
+  .header-banner {
+    background: none !important;
+    padding: 4mm 0 !important;
+    text-align: center;
+  }
+
+  .company-logo {
+    width: 180px !important;
+    height: auto;
+    margin: 0 auto !important;
+    display: block;
+  }
+
+  .header-banner h1, .header-banner p {
+    display: none !important;
+  }
+
+  /* Show text values instead of inputs for Date, To Address, and Customer Address */
+  #quotationDate, #toAddress, #serviceAddress {
+    border: none !important;
+    background: transparent !important;
+    pointer-events: none !important;
+    color: #000 !important;
+    font-weight: 500;
+    width: 100% !important;
+  }
+
+  /* Align labels and text neatly */
+  .top-fields label {
+    display: block;
+    font-weight: 600;
+    color: #004080;
+    margin-bottom: 2px;
+  }
+
+  .top-fields input {
+    display: block;
+    margin-top: 2px;
+    width: 100%;
+  }
+
+  /* GSTIN and Address also uneditable */
+  #gstinNumber, #companyAddress {
+    border: none !important;
+    background: transparent !important;
+    pointer-events: none !important;
+    color: #000 !important;
+    font-weight: 500;
+    width: 100% !important;
+  }
+
+  /* Keep Amount in Words on one line */
+  #amountWords {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  /* Compact spacing for one-page fit */
+  body {
+    margin: 0;
+    padding: 8mm;
+    background: white;
+    font-size: 11pt;
+  }
+
+  .top-fields, .summary, .footer {
+    margin: 4mm 0 !important;
+    padding: 4mm !important;
+  }
+
+  table {
+    page-break-inside: avoid;
+  }
+
+  .summary, .footer {
+    page-break-inside: avoid;
+  }
+}
+@media print {
+  /* Hide buttons and Action column */
+  .btn, .print-section, th:last-child, td:last-child {
+    display: none !important;
+  }
+
+  /* Compact banner with highlighted logo */
+  .header-banner {
+    background: none !important;
+    padding: 2mm 0 !important;          /* Very slim banner */
+    text-align: center;
+  }
+
+  .company-logo {
+    width: 260px !important;            /* Larger logo for print */
+    height: auto;
+    margin: 0 auto !important;
+    display: block;
+    filter: drop-shadow(0 1mm 1mm rgba(0,0,0,0.2)); /* subtle highlight */
+  }
+
+  /* Remove text below logo */
+  .header-banner h1, .header-banner p {
+    display: none !important;
+  }
+
+  /* Keep Quotation title visible and compact */
+  header h2 {
+    color: #004080;
+    margin-top: 3mm;
+    font-size: 15pt;
+    border: none;
+  }
+
+  /* Show text values instead of inputs for all fields */
+  #quotationDate, #toAddress, #serviceAddress,
+  #gstinNumber, #companyAddress {
+    border: none !important;
+    background: transparent !important;
+    pointer-events: none !important;
+    color: #000 !important;
+    font-weight: 500;
+    width: 100% !important;
+  }
+
+  /* Align labels and text neatly */
+  .top-fields label, .footer label {
+    display: block;
+    font-weight: 600;
+    color: #004080;
+    margin-bottom: 2px;
+  }
+
+  .top-fields input, .footer input {
+    display: block;
+    margin-top: 2px;
+    width: 100%;
+  }
+
+  /* Keep Amount in Words on one line */
+  #amountWords {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  /* Compact spacing for one-page fit */
+  body {
+    margin: 0;
+    padding: 8mm;
+    background: white;
+    font-size: 11pt;
+  }
+
+  .top-fields, .summary, .footer {
+    margin: 4mm 0 !important;
+    padding: 4mm !important;
+  }
+
+  table {
+    page-break-inside: avoid;
+  }
+
+  .summary, .footer {
+    page-break-inside: avoid;
+  }
+}
+.header-banner::after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 1px;
+  background-color: #004080;
+  margin-top: 3mm;
+}
+
+header h2 {
+  text-align: center;
+  font-weight: 600;
+  border-bottom: 1px solid #004080;
+  padding-bottom: 2mm;
+}
+td, th {
+  padding: 6px 8px !important;
+}
+.footer {
+  border-top: 1px solid #004080;
+  font-size: 10.5pt;
+  color: #333;
+}
+    table {
+  page-break-inside: auto;
+}
+
+@media print {
+  .summary {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 20px;
+    border-top: 1px solid #999;
+    padding-top: 6px;
+    margin-top: 10px;
+  }
+
+  .summary p {
+    margin: 0;
+    font-size: 13px;
+  }
+
+  .grand-total {
+    text-align: right;
+    font-weight: bold;
+    border-top: 1px solid #999;
+    padding-top: 6px;
+    margin-top: 8px;
+    font-size: 14px;
+  }
+
+  .amount-words {
+    margin-top: 4px;
+    font-style: italic;
+    font-size: 12px;
+  }
+
+  /* Optional: subtle background box for totals */
+  .totals-box {
+    background-color: #f9f9f9;
+    padding: 4px;
+    border-radius: 4px;
+  }
+}
+@media print {
+  body {
+    margin: 0;
+    padding: 0;
+  }
+
+  .page {
+    page-break-inside: avoid;
+    page-break-after: auto;
+  }
+
+  .quotation-container {
+    margin: 0;
+    padding: 10px 20px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  /* Prevent unwanted breaks */
+  table, .totals-box, .address-section {
+    page-break-inside: avoid;
+  }
+
+  /* Compact spacing */
+  .address-section,
+  .totals-box {
+    margin-bottom: 6px;
+  }
+
+  /* Reduce default Chrome print margins */
+  @page {
+    margin: 10mm;
+  }
+}
+
+/* Responsive layout for mobile and tablets */
+@media screen and (max-width: 768px) {
+  body {
+    font-size: 14px;
+    padding: 10px;
+  }
+
+  .header-banner {
+    text-align: center;
+  }
+
+  table {
+    width: 100%;
+    font-size: 13px;
+    border-collapse: collapse;
+  }
+
+  th, td {
+    padding: 6px;
+    text-align: center;
+  }
+
+  .address-section input,
+  .address-section textarea {
+    width: 100%;
+    box-sizing: border-box;
+    word-wrap: break-word;
+  }
+
+  .totals-box {
+    width: 100%;
+    margin-top: 10px;
+  }
+
+  .grand-total {
+    text-align: center;
+    font-size: 15px;
+  }
+
+  .btn {
+    display: block;
+    width: 100%;
+    margin: 5px 0;
+  }
+}
+
+@media print {
+  /* Hide default dropdown/arrow icons in inputs */
+  input, select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background: none !important;
+  }
+
+  /* Optional: remove borders if arrow space remains */
+  select::-ms-expand {
+    display: none;
+  }
+}
+h2 {
+  display: block;
+  width: 100%;
+  text-align: center;
+  font-size: 28px;
+  font-weight: bold;
+  margin: 20px 0 10px 0;
+  color: #002b5c; /* optional: matches your blue theme */
+}
+
