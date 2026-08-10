@@ -643,6 +643,35 @@ function printQuotation() {
   window.print();
   document.querySelectorAll(".btn").forEach(btn => btn.style.display = "inline-block");
 }
+    function calculateTotals() {
+  let rows = document.querySelectorAll("#quotationTable tbody tr");
+  let subtotal = 0;
+
+  rows.forEach(row => {
+    let qty = parseFloat(row.querySelector(".qty").value) || 0;
+    let price = parseFloat(row.querySelector(".price").value) || 0;
+    let totalField = row.querySelector(".total");
+
+    // If user entered a manual total, keep it
+    let manualTotal = parseFloat(totalField.value);
+    let autoTotal = qty * price;
+
+    if (!isNaN(manualTotal) && manualTotal > 0) {
+      subtotal += manualTotal;
+    } else {
+      totalField.value = autoTotal.toFixed(2);
+      subtotal += autoTotal;
+    }
+  });
+
+  let gst = subtotal * 0.18;
+  let grandTotal = subtotal + gst;
+
+  document.getElementById("subtotal").textContent = subtotal.toFixed(2);
+  document.getElementById("gst").textContent = gst.toFixed(2);
+  document.getElementById("grandTotal").textContent = grandTotal.toFixed(2);
+}
+
   </script>
 </head>
 <body>
@@ -680,7 +709,7 @@ function printQuotation() {
         <td><input type="text" class="item"></td>
         <td><input type="number" class="qty" value="0"></td>
         <td><input type="number" class="price" value="0"></td>
-        <td class="total">0</td>
+        <td><input type="text" class="total" placeholder="Enter total"></td>
         <td><button class="btn" onclick="removeRow(this)">Remove</button></td>
       </tr>
     </tbody>
